@@ -20,5 +20,3 @@
 	</div>
 	<?php do_action( 'touriztolite-theme/header/after' ); ?>
 </div>
-
-
