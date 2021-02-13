@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="stylesheet" href="../src/index.css">
+    <link rel="stylesheet" href="../src/probes.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
@@ -31,39 +31,45 @@
     <title>React App</title>
   </head>
   <body>
-    <div class="searcher">
-      <div class="header">
-        <button class="icon"><i class="fas fa-user"></i></button>
-      </div>
-        <h1 class= "header1">Travelid</h1>
-        <h3 class= "header2">The best way of enjoying a safety travel!</h3>
-        <div class="container-1">
-            <input type="search" id="search" placeholder="Enter your country"/>
-            <button class="icon"><i class="fa fa-search"></i></button>
-        </div>
 
+    <div class="container">
+
+    <header>
+      <h2><a href="#"><i class="fas fa-globe-europe"></i> Travelid</a></h2>
+      <nav>
+        <a class="btn" href="#" title="Register / Log In">Register/Log In</a>
+      </nav>
+    </header>
+
+    <div class="cover">
+      <h1>The best way of enjoying a safety travel</h1>
+      <form  class="flex-form">
+        <label for="from">
+          <i class="fas fa-map-marker-alt"></i>
+        </label>
+        <input type="search" placeholder="Where do you want to go?">
+        <input type="submit" value="Search">
+      </form>
     </div>
-    <div class="footer">
-      <p class="footer-p"> @ 2021 Travelid LLC All Rights Reseved</p>
-    </div>
+
+</div>
 
 
 
 
 
 
+        <!--<noscript>You need to enable JavaScript to run this app. vers1</noscript>
+        <div id="root"></div> -->
+        <!--
+          This HTML file is a template.
+          If you open it directly in the browser, you will see an empty page.
 
-    <!--<noscript>You need to enable JavaScript to run this app. vers1</noscript>
-    <div id="root"></div> -->
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+          You can add webfonts, meta tags, or analytics to this file.
+          The build step will place the bundled scripts into the <body> tag.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
-</html>
+          To begin the development, run `npm start` or `yarn start`.
+          To create a production bundle, use `npm run build` or `yarn build`.
+        -->
+      </body>
+    </html>
