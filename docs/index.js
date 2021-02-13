@@ -20,7 +20,7 @@ function insertDataFromCountry(country) {
 
 function countrysearched(form) {
 	const xhttp = new XMLHttpRequest();
-	let url = "http://localhost:8080/travelid/index.php/".concat(document.getElementById(country).value);
+	let url = "http://localhost/travelid/travelid/server/index.php/".concat(document.getElementById(country).value);
 	console.log(url);
 	xhttp.open('GET', url, true);
 	xhttp.send();
