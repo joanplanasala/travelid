@@ -36,6 +36,7 @@ button_search.onclick = function(){
 			insertCovidDataFromCountry(country);
 		}
 	}
+	return false;
 }
 
 function insertDataFromCountry(country) {
