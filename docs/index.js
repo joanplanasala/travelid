@@ -34,7 +34,7 @@ button_search.onclick = function(){
 				let country = new Country(selection, covid_data[0].continent, covid_data[0].population_density, 
 					covid_data[0].positive_rate, covid_data[0].main_cases_smoothed_per_million, covid_data[0].new_deaths_smoothed_per_million, 
 					covid_data[0].people_vaccinated_per_hundred, covid_data[0].stringencyindex);
-				
+
 				document.getElementById("name").innerHTML = country.name;
 				document.getElementById("continent").innerHTML = country.continent;
 				document.getElementById("pop_density").innerHTML = country.pop_density;
@@ -55,4 +55,3 @@ button_search.onclick = function(){
 
 	return false;
 }
- 
