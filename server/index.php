@@ -77,7 +77,7 @@
 								from ".strtolower($tableName)." where location=".'"'.$location.'"';
 		else
 			$query = "select * from ".strtolower($tableName);
-			
+
 		$result = mysqli_query($connection, $query);
 		$colsNames = namesOfColumns($connection, $tableName);
 		if($tableName == "covid_data")
