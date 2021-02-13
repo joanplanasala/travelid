@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" href="../src/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -27,14 +28,20 @@
     <title>React App</title>
   </head>
   <body>
-    <div class="header">
-      <h1>Travelid</h1>
-      <h3>The best form of enjoying a safety travel!</h3>
+    <div class="searcher">
+        <h1 class= "header1">Travelid</h1>
+        <h3 class= "header2">The best form of enjoying a safety travel!</h3>
+        <form action="/search"></form>
+          <label>  </label>
+          <input type="search" name="search" placeholder="Enter your destination" class="search">
+
     </div>
-    <div class="header-search">
-      <form action="/search"></form>
-        <label  </label>
-        <input type="search" name="search" placeholder="Enter your destination">
+    
+    <div class="box">
+      <div class="container-1">
+          <span class="icon"><i class="fa fa-search"></i></span>
+          <input type="search" id="search" placeholder="Search..." />
+      </div>
     </div>
 
 
