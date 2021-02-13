@@ -49,7 +49,7 @@ class database{
 		}
 		
 		function createCSV($text){
-			$fh = fopen("covid_data.csv", 'w+') or die("ERROR: couldn't create the file.");
+			$fh = fopen("travelid/travelid/server/covid_data.csv", 'w+') or die("ERROR: couldn't create the file.");
   			fwrite($fh, $text) or die("ERROR: unable to write the file.");
   			self::importCSV($fh);
 
