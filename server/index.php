@@ -13,10 +13,9 @@
     $url = $_SERVER["REQUEST_URI"];
 	$splitted_url_1 = explode('/', $url);
 	$queries = explode('?', $splitted_url_1[5]);
-	$iso = $queries[0];
-	echo($iso);
+	$location = $queries[0];
 
-	$table_name=$iso."_COM";
+	$table_name=$location."_COM";
 	$result = mysqli_query($connection, "show tables like".'"'.$table_name.'"');
 	if(mysqli_num_rows($result)==0){
 		$query = "CREATE TABLE ".$table_name."(
@@ -57,29 +56,43 @@
 		
 		mysqli_query($connection, $query);
 	}
-	$comments = download_info($connection,$iso, $table_name);
-	$covid_info = download_info($connection,$iso, "covid_data");
+	$covid_info = download_info($connection,$location, "covid_data");
+	$comments = download_info($connection,$location, $table_name);
+	
 	
 	$result_array = array($covid_info,$comments);
 	$json_result = json_encode($result_array);
 	echo($json_result);
 
 
-	function download_info($connection, $iso, $tableName){
-		$query = "select * from ".$tableName." where iso_code = ".$iso;
-		echo($query);
-		$result = mysqli_fetch_row(mysqli_query($connection, $query));
-		echo("hola");
+	function download_info($connection, $location, $tableName){
+		if($tableName == "covid_data")
+			$query = "select positive_rate, 
+								continent,
+								people_vaccinated_per_hundred,
+								stringency_index,
+								population_density,
+								new_cases_smoothed_per_million,
+								new_deaths_smoothed_per_million
+								from ".strtolower($tableName)." where location=".'"'.$location.'"';
+		else
+			$query = "select * from ".strtolower($tableName);
+			
+		$result = mysqli_query($connection, $query);
 		$colsNames = namesOfColumns($connection, $tableName);
+		if($tableName == "covid_data")
+			$colsNames = array("positive_rate", "continent", "people_vaccinated_per_hundred", "stringencyindex", "population_density", "main_cases_smoothed_per_million", "new_deaths_smoothed_per_million");
+		
 		$array_result = [];
-		$i = 0;
-		foreach ($colsNames as $name) {
-			$aux[$name] = $result[$i];
-			$i ++;
+		while($row = mysqli_fetch_row($result)){			
+			$i = 0;
+			foreach ($colsNames as $name) {
+				$aux[$name] = $row[$i];
+				$i ++;
+			}
+			array_push($array_result, $aux);
 		}
-
-		array_push($array_result, array($table => $aux));
-		return $array_result;
+		return array($tableName => $array_result);
 	}
 
 	function namesOfColumns($connection, $table){
