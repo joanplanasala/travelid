@@ -1,0 +1,125 @@
+/* #Entry Meta */
+.posted-on,
+.cat-links,
+.byline,
+.tags-links {
+	color: $secondary_text_color;
+}
+
+.comments-button {
+	color: $secondary_text_color;
+}
+.comments-button:hover {
+	color: $invert_text_color;
+	background-color: $accent_color;
+}
+
+.btn-style .post-categories a {
+	color: $invert_text_color;
+	background-color: $accent_color;
+}
+.btn-style .post-categories a:hover {
+	color: $invert_text_color;
+	background-color: @lighten($accent_color, 15%);
+}
+
+.sticky-label {
+	color: $invert_text_color;
+	background-color: $accent_color;
+}
+
+/* Posts List Item Invert */
+.invert-hover.has-post-thumbnail:hover,
+.invert-hover.has-post-thumbnail:hover .posted-on,
+.invert-hover.has-post-thumbnail:hover .cat-links,
+.invert-hover.has-post-thumbnail:hover .byline,
+.invert-hover.has-post-thumbnail:hover .tags-links,
+.invert-hover.has-post-thumbnail:hover .entry-meta,
+.invert-hover.has-post-thumbnail:hover a,
+.invert-hover.has-post-thumbnail:hover .btn-icon,
+.invert-item.has-post-thumbnail,
+.invert-item.has-post-thumbnail .posted-on,
+.invert-item.has-post-thumbnail .cat-links,
+.invert-item.has-post-thumbnail .byline,
+.invert-item.has-post-thumbnail .tags-links,
+.invert-item.has-post-thumbnail .entry-meta,
+.invert-item.has-post-thumbnail a,
+.invert-item.has-post-thumbnail .btn:hover,
+.invert-item.has-post-thumbnail .btn-style .post-categories a:hover,
+.invert,
+.invert .entry-title,
+.invert a,
+.invert .byline,
+.invert .posted-on,
+.invert .cat-links,
+.invert .tags-links {
+	color: $invert_text_color;
+}
+
+.invert-hover.has-post-thumbnail:hover a:hover,
+.invert-hover.has-post-thumbnail:hover .btn-icon:hover,
+.invert-item.has-post-thumbnail a:hover,
+.invert a:hover {
+	color: $link_color;
+}
+
+.invert-hover.has-post-thumbnail .btn,
+.invert-item.has-post-thumbnail .comments-button {
+	color: $invert_text_color;
+	background-color: $accent_color;
+}
+.invert-hover.has-post-thumbnail .btn:hover,
+.invert-item.has-post-thumbnail .comments-button:hover {
+	color: $link_color;
+	background-color: $invert_text_color;
+}
+
+/* Image Post Format */
+.post_format-post-format-image .post-thumbnail__link:before {
+	color: $invert_text_color;
+	background-color: $accent_color;
+}
+
+/* Gallery Post Format */
+.post_format-post-format-gallery .swiper-button-prev,
+.post_format-post-format-gallery .swiper-button-next {
+	color: $secondary_text_color;
+}
+.post_format-post-format-gallery .swiper-button-prev:hover,
+.post_format-post-format-gallery .swiper-button-next:hover {
+	color: $link_hover_color;
+}
+
+/* Link Post Format */
+.post_format-post-format-quote .post-format-quote {
+	color: $invert_text_color;
+	background-color: $accent_color;
+}
+.post_format-post-format-quote .post-format-quote:before {
+	color: $accent_color;
+	background-color: $invert_text_color;
+}
+
+/* Post Author */
+.post-author__title a {
+	color: $link_color;
+}
+.post-author__title a:hover {
+	color: $link_hover_color;
+}
+.invert .post-author__title a {
+	color: $invert_text_color; 
+}
+.invert .post-author__title a:hover {
+	color: $link_color; 
+}
+
+/* Single Post */
+.single-post blockquote {
+	border-color: $accent_color;
+}
+.single-post:not(.post-template-single-layout-4):not(.post-template-single-layout-7) .tags-links a:hover {
+	color: $invert_text_color;
+	border-color: $accent_color;
+	background-color: $accent_color;
+}

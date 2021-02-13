@@ -1,0 +1,36 @@
+/* Page preloader */
+.page-preloader {
+	border-top-color: $accent_color;
+	border-right-color: $accent_color;
+}
+
+/* Logo */
+.site-logo__link,
+.site-logo__link:hover {
+	color: $accent_color;
+}
+
+/* Banner */
+.top_panel_banner {
+	text-align: $top_panel_banner_position;
+	padding: $top_panel_banner_offset{px} 0;
+	background: linear-gradient(to left, #30333c 50%, #2C2D37 50%) !important;
+}
+@media (width: 320px) {
+	.top_panel_banner {
+	    margin-top: -10px !important;
+
+}
+/* Page title */
+.page-title {
+	font-style: $h2_font_style;
+	font-weight: $h2_font_weight;
+	font-size: @font_size($h2_font_size, multiple, ceil, 0.6)px;
+	line-height: $h2_line_height;
+	font-family: @font_family( $h2_font_family );
+	letter-spacing: $h2_letter_spacing{px};
+	color: $h2_color;
+}
+@media (min-width: 1200px) {
+	.page-title { font-size: $h2_font_size{px}; }
+}

@@ -1,0 +1,80 @@
+/*--------------------------------------------------------------
+### Single Post
+--------------------------------------------------------------*/
+
+.single-post {
+	article.post {
+		margin-bottom: 50px;
+		padding-bottom: 45px;
+		border-bottom: 1px solid $color__background-hr;
+	}
+	.post>.entry {
+		&-header {
+			margin-bottom: 35px;
+		}
+		&-content {
+			@include media-breakpoint-up(sm) {
+				@include font-size(18/16);
+			}
+		}
+		&-footer {
+			.entry-meta:not(:empty) {
+				margin-top: 13px;
+			}
+		}
+	}
+	.entry {
+		&-header {
+			.tags-links {
+				a {
+					display: inline-block;
+					margin-left: 5px;
+				}
+			}
+		}
+		&-footer {
+			.tags-links {
+				a {
+					display: inline-block;
+					margin-left: 5px;
+					margin-bottom: 5px;
+					padding: 6px 10px;
+					@include border-radius;
+					border: 1px solid $color__background-hr;
+					&:hover {
+						background-color: $color__background-hr;
+					}
+				}
+			}
+		}
+		&-title {
+			margin-top: 0;
+		}
+	}
+	.post-thumbnail {
+		margin-bottom: 15px;
+	}
+	.overlay-thumbnail {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+		background-size: cover;
+		background-position: center;
+	}
+	blockquote:not(.post-format-quote) {
+		border-top: 3px solid $color__background-hr;
+		border-bottom: 3px solid $color__background-hr;
+		text-align: center;
+		padding: 30px 10%;
+		&:before,
+		&:after {
+			content: none;
+		}
+		cite {
+			margin-top: 20px;
+		}
+	}
+}
