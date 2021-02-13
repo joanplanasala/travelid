@@ -3,7 +3,7 @@
 
 	require_once("database.php");
 	$dbHost = "localHost";
-	$dbName = "travellid19";
+	$dbName = "travelid";
 	$dbUsr = "root";
 	$dbPassword = "";
 	$db = new database($dbHost, $dbName, $dbUsr, $dbPassword, "utf8");
@@ -14,6 +14,7 @@
 	$splitted_url_1 = explode('/', $url);
 	$queries = explode('?', $splitted_url_1[5]);
 	$iso = $queries[0];
+	echo($iso);
 
 	$table_name=$iso."_COM";
 	$result = mysqli_query($connection, "show tables like".'"'.$table_name.'"');
@@ -30,52 +31,60 @@
 	if(count($queries)>1){
 		$idd = $queries[1];
 		$username = $queries[2];
-		$comment = $queries[3];
-		$comment_replaced = str_replace("%20", " ", $comment);
 		$date=date("Y")."-".date("m")."-".date("d");
-		$like = $queries[4];
+		$state = $queries[3];
+		if(count($queries) > 4){
+			$comment = $queries[4];
+			$comment_replaced = str_replace("%20", " ", $comment);
+		}
 
-		if($like != "L"){ 	#insert comment
+		if($state == "L"){ 	#insert comment
+			$query="update ".$table_name." SET likes = likes + 1 where id=".$idd;
+		}
+
+		elseif($state == "D"){
+			$query = "delete from ".$table_name." where id = ".$idd;
+		}
+		else{				#like given, no comment written
+			
 			$query="insert into ".$table_name." values (".$idd.", 
 																".'"'.$username.'"'.",
 																".'"'.$comment_replaced.'"'.",
 																".'"'.$date.'"'.",
 																0 )";
-			echo($query);
-			
-		}
-
-		else{				#like given, no comment written
-			$query="update ".'"'.$table_name.'"'." SET likes = likes + 1 where id=".$idd;
 
 		}
-
-		echo("hola");
+		
 		mysqli_query($connection, $query);
 	}
+	$comments = download_info($connection,$iso, $table_name);
+	$covid_info = download_info($connection,$iso, "covid_data");
 	
-	$covid_info = load_covid_info($connection,$iso);
-	$json_result = json_encode($covid_info);
-	#echo($json_result);
+	$result_array = array($covid_info,$comments);
+	$json_result = json_encode($result_array);
+	echo($json_result);
 
 
-	function load_covid_info($connection, $iso){
-		$query = "select * from `covid_data_1` where iso_code= ".'"'.$iso.'"';
+	function download_info($connection, $iso, $tableName){
+		$query = "select * from ".$tableName." where iso_code = ".$iso;
+		echo($query);
 		$result = mysqli_fetch_row(mysqli_query($connection, $query));
-		$colsNames = namesOfColumns($connection);
+		echo("hola");
+		$colsNames = namesOfColumns($connection, $tableName);
 		$array_result = [];
 		$i = 0;
 		foreach ($colsNames as $name) {
 			$aux[$name] = $result[$i];
 			$i ++;
 		}
-		array_push($array_result, array("covid_info" => $aux));
+
+		array_push($array_result, array($table => $aux));
 		return $array_result;
 	}
 
-	function namesOfColumns($connection){
+	function namesOfColumns($connection, $table){
 		$colsNames = [];
-		$columnsQuery = "select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = ".'"'."covid_data_1".'"';
+		$columnsQuery = "select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = ".'"'.$table.'"';
 		$columns = mysqli_query($connection, $columnsQuery);
 		foreach ($columns as $value) {
 			foreach ($value as $v) {
