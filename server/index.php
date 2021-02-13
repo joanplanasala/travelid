@@ -12,10 +12,47 @@
 
     $url = $_SERVER["REQUEST_URI"];
 	$splitted_url_1 = explode('/', $url);
-	$queries = explode('?', $splitted_url_1[3]);
+	$queries = explode('?', $splitted_url_1[5]);
 	$iso = $queries[0];
-	$covid_info = load_covid_info($connection,$iso);
+	
+	
+	$table_name=$iso."_COM";
+	$query="IF OBJECT_ID(".'"'.$table_name.'"'.") IS NULL			
+			CREATE TABLE ".'"'.$table_name.'"'."(
+			[id] [int],
+			[username] [varchar](20),
+			[comment][varchar](500),
+			[date][DATE],
+			[likes][int]		
+			)
+			END";
+	mysqli_query($connection, $query);
+	if(len($queries)>1){
+		$idd = $queries[1];
+		$username = $queries[2];
+		$comment = $queries[3];
+		$date=date("Y")."-".date("m")."-".date("d");
+		$like = $queries[4];
 
+		if($like==FALSE){ 	#insert comment
+			$query="insert into ".'"'.$table_name.'"'." values (".$idd.", 
+																".'"'.$username.'"'.",
+																".'"'.$comment.'"'.",
+																".'"'.$date.'"'.",
+																0 )";
+			
+		}
+
+		else{				#like given, no comment written
+			$query="UPDATE ".'"'.$table_name.'"'." SET likes = likes + 1 where id=".$idd;
+
+		}
+		mysqli_query($connection, $query);
+
+	}
+	echo($query);
+	
+	$covid_info = load_covid_info($connection,$iso);
 	$json_result = json_encode($covid_info);
 	echo($json_result);
 
@@ -45,4 +82,6 @@
 		}
 		return $colsNames;
 	}
+
+
 ?>
