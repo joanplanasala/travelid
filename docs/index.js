@@ -32,6 +32,7 @@ var comment_textbox = document.getElementById("comment_textbox");
 var title_link = document.getElementById("title_link");
 var reg_log_button = document.getElementById("reg_log_button");
 var config_display = ini_screen.style.display;
+var selection;
 
 reg_log_button.onclick = function(){
 	location.replace("../travelid/public/login.html");
@@ -42,13 +43,13 @@ title_link.onclick = function(){
 
 
 button_search.onclick = function() {
-	displayall();
+	selection = document.getElementById("country").value;
+	displayall(selection);
 }
 
-function displayall(){
+function displayall(selection){
 	ini_screen.style.display = "none";
 	const xhttp = new XMLHttpRequest();
-	let selection = document.getElementById("country").value;
 	console.log(selection);
 	let url = "http://localhost/travelid/server/index.php/".concat(selection);
 	console.log(url);
@@ -114,7 +115,7 @@ button_comment.onclick = function(){
 		comment_id ++;
 	}
 
-	displayall();
+	displayall(selection);
 
 	return false;
 }
