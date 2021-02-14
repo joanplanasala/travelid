@@ -29,6 +29,13 @@ var ini_screen = document.getElementById("ini_screen");
 var data_div = document.getElementById("data");
 var forum = document.getElementById("forum");
 var comment_textbox = document.getElementById("comment_textbox");
+var title_link = document.getElementById("title_link");
+var config_display = ini_screen.style.display;
+
+title_link.onclick = function(){
+	ini_screen.style.display = config_display;
+}
+
 
 button_search.onclick = function(){
 	ini_screen.style.display = "none";
