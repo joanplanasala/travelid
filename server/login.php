@@ -31,7 +31,7 @@
 		$email=$queries[3];
 		$checkquery="select * from users_register where username =".'"'.$username.'"';
 		$auxdata=mysqli_fetch_row(mysqli_query($connection, $checkquery));
-		echo($auxdata);
+		
 		if($auxdata!=false){
 			$res="ERROR: USER ALREADY REGISTERED";
 		}
