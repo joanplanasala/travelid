@@ -9,13 +9,21 @@ class Country {
 		this.percent_vaccin = percent_vaccin;
 		this.stringency = stringency;
 	}
-
-
+}
+class Comments {
+    constructor(id, username, comment, date, likes) {
+        this.id = id;
+        this.username = username;
+        this.text = comment;
+        this.date = date;
+        this.likes = likes;
+    }
 }
 
 var button_search = document.getElementById("button_search"); 
 var ini_screen = document.getElementById("ini_screen");
 var data_div = document.getElementById("data");
+var forum = document.getElementById("forum");
 
 button_search.onclick = function(){
 	ini_screen.style.display = "none";
@@ -32,6 +40,7 @@ button_search.onclick = function(){
 			let data = JSON.parse(this.responseText);
 			console.log(data);
 			covid_data = data[0].covid_data;
+			comments = data[1].comments;
 			console.log(covid_data[0]);
 			if(covid_data.length != 0){
 				let country = new Country(selection, covid_data[0].continent, covid_data[0].population_density, 
@@ -51,6 +60,22 @@ button_search.onclick = function(){
 				document.getElementById("percent_vaccin_meter").value = parseInt(country.percent_vaccin);
 				document.getElementById("stringency").innerHTML = country.stringency;
 				document.getElementById("stringency_meter").value = parseInt(country.stringency);
+
+			}
+			
+			if(comments.length != 0){
+				for (var i = 0; i <= comments.length-1; i++) {
+					let comment = new Comments(comments[i].id, comments[i].username, comments[i].comment, comments[i].date, comments[i].likes);
+					forum.innerHTML +=`
+										<div class="post">
+					                        <div class="entry">
+					                        	<p>${comment.text}</p>
+					                        </div>
+					                        <p>Posted by ${comment.username} on ${comment.date}</p>
+					                        <p>Likes (${comment.likes})</p> 
+					                    </div>
+									`;
+				}
 
 			}
 		}
