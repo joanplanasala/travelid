@@ -103,6 +103,8 @@
 			}
 			array_push($array_result, $aux);
 		}
+		if($tableName != "covid_data")
+			$tableName = "comments";
 		return array($tableName => $array_result);
 	}
 

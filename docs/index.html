@@ -44,6 +44,10 @@
     <meta charset="utf-8" />
     <link rel="icon" href="" />  <!-- Completaaaar! -->
     <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
@@ -60,8 +64,8 @@
 
     <div class="container">
     <header>
-      <h2><a href="#"><i class="fas fa-globe-europe"></i> Travelid</a></h2>
-      <nav>
+      <h2><a href="#" id="title_link"><i class="fas fa-globe-europe"></i> Travelid</a></h2>
+      <nav id="reg_log_button">
         <a class="btn" href="#" title="Register / Log In">Register/Log In</a>
       </nav>
     </header>
@@ -80,13 +84,24 @@
     </div>
 
   <div class="row" id="data">
-    <div class="column left" style="background-color:#aaa;">
+    <div class="column left">
       <h2>Forum</h2>
-      <p>Some text..</p>
+      <div id="insert_comm">
+        <form>
+          <label>Add your comment: </label><br>
+          <textarea name="comment_box" id="comment_textbox" rows="4" cols="50"></textarea><br>
+          <button id="button_comment">Publish</button>
+        </form>
+        
+      </div>
+      <div id="forum">
+        <!-- aqui van els comentaris -->
+
+      </div>
     </div>
-    <div class="column right datacol" style="background-color:#bbb;">
-      <h1 id = "name"></h2>
-      <h2 id = "continent"></h2>
+    <div class="column right datacol">
+      <h1 id = "name">Country</h2>
+      <h2 id = "continent">Continent</h2>
       <p>Population density: </p><p id = "pop_density"></p><p> people per &#13218;</p><br>
       <p>% Positive Rate: </p><p id = "pos_rate"></p><meter id="pos_rate_meter" value="0" min="0" max="100"></meter><br>
       <p>New Cases Per Million: </p><p id = "n_cases_pm"></p><meter id="n_cases_pm_meter" value="0" min="0" max="1000000"></meter><br>
@@ -94,6 +109,11 @@
       <p>% People Vaccinated: </p><p id = "percent_vaccin"></p><meter id="percent_vaccin_meter" value="0" min="0" max="100"></meter><br>
       <p>Stringency Index</p><p id = "stringency"></p><meter id="stringency_meter" value="0" min="0" max="100"></meter><br>
     </div>
+  </div>
+
+  <div id="register_login_screen">
+      <!-- Aqui una forma simplificada del login.html i todo eso -->
+
   </div>
    
 

@@ -9,32 +9,61 @@ class Country {
 		this.percent_vaccin = percent_vaccin;
 		this.stringency = stringency;
 	}
-
-
+}
+class Comments {
+    constructor(id, username, comment, date, likes) {
+        this.id = id;
+        this.username = username;
+        this.text = comment;
+        this.date = date;
+        this.likes = likes;
+    }
 }
 
+var user_logged = "EXAMPLE";
+var country;
+var comment_id = 0;
 var button_search = document.getElementById("button_search"); 
+var button_comment = document.getElementById("button_comment"); 
 var ini_screen = document.getElementById("ini_screen");
 var data_div = document.getElementById("data");
+var forum = document.getElementById("forum");
+var comment_textbox = document.getElementById("comment_textbox");
+var title_link = document.getElementById("title_link");
+var reg_log_button = document.getElementById("reg_log_button");
+var config_display = ini_screen.style.display;
+var selection;
 
-button_search.onclick = function(){
+reg_log_button.onclick = function(){
+	location.replace("../travelid/public/login.html");
+}
+title_link.onclick = function(){
+	ini_screen.style.display = config_display;
+}
+
+
+button_search.onclick = function() {
+	selection = document.getElementById("country").value;
+	displayall(selection);
+}
+
+function displayall(selection){
 	ini_screen.style.display = "none";
 	const xhttp = new XMLHttpRequest();
-	let selection = document.getElementById("country").value;
 	console.log(selection);
-	let url = "http://localhost/travelid/travelid/server/index.php/".concat(selection);
+	let url = "http://localhost/travelid/server/index.php/".concat(selection);
 	console.log(url);
 	xhttp.open('GET', url, true);
 	xhttp.send();
 
-	xhttp.onreadystatechange = function(){
+	xhttp.onreadystatechange = function display_data(){
 		if(this.readyState ==4 && this.status == 200){
 			let data = JSON.parse(this.responseText);
 			console.log(data);
 			covid_data = data[0].covid_data;
-			console.log(covid_data[0]);
+			comments = data[1].comments;
 			if(covid_data.length != 0){
-				let country = new Country(selection, covid_data[0].continent, covid_data[0].population_density, 
+				country = new Country(selection, covid_data[0].continent, covid_data[0].population_density, 
 					covid_data[0].positive_rate, covid_data[0].main_cases_smoothed_per_million, covid_data[0].new_deaths_smoothed_per_million, 
 					covid_data[0].people_vaccinated_per_hundred, covid_data[0].stringencyindex);
 
@@ -53,8 +82,40 @@ button_search.onclick = function(){
 				document.getElementById("stringency_meter").value = parseInt(country.stringency);
 
 			}
+			forum.innerHTML = "";
+			if(comments.length != 0){
+				for (var i = 0; i <= comments.length-1; i++) {
+					let comment = new Comments(comments[i].id, comments[i].username, comments[i].comment, comments[i].date, comments[i].likes);
+					forum.innerHTML +=`
+										<div class="post">
+					                        <div class="entry">
+					                        	<p>${comment.text}</p>
+					                        </div>
+					                        <p>Posted by ${comment.username} on ${comment.date}</p>
+					                        <p>Likes (${comment.likes})</p> 
+					                    </div>
+									`;
+				}
+
+			}
 		}
 	}
+
+	return false;
+}
+
+button_comment.onclick = function(){
+	let comment_text = comment_textbox.value;
+	const xhttp = new XMLHttpRequest();
+	if(country != null){
+		let url = "http://localhost/travelid/server/index.php/"+country.name+'?'+comment_id+'?'+user_logged+"?C?"+comment_text;
+		console.log(url);
+		xhttp.open('GET', url, true);
+		xhttp.send();
+		comment_id ++;
+	}
+
+	displayall(selection);
 
 	return false;
 }

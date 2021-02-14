@@ -105,7 +105,8 @@ body {
   -moz-background-size: cover;
   background-size: cover;
   color: #0a0a0b;
-  overflow: hidden;
+  overflow: auto;
+  padding-bottom: 5%;
 }
 
 ul, nav{
@@ -245,6 +246,8 @@ input[type="text"] {
   color: #fff;
 }
 
+
+
 @media all and (max-width:800px) {
   body {
     font-size: 0.9rem;
@@ -277,6 +280,11 @@ input[type="text"] {
     font-size: 2rem;
   }
 
+  #name {
+    font-family: 'Poppins', sans-serif;
+    color: black;
+  }
+
   .cover {
     padding: 20px;
   }
@@ -289,14 +297,22 @@ input[type="text"] {
 .column {
   float: left;
   padding: 10px;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 8px;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  opacity: 0.95;
 }
 
 .left {
-  width: 75%;
+  width: 70%;
+  background-color:#aaa;
 }
 
 .right {
-  width: 25%;
+  background-color:#bbb;
+  width: 20%;
 }
 
 /* Clear floats after the columns */
@@ -305,6 +321,11 @@ input[type="text"] {
   display: table;
   clear: both;
 }
+
+.row {
+  padding-top: 7%;
+}
+
 
 
 @media all and (max-width:360px) {
