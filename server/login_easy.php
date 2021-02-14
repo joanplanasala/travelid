@@ -28,7 +28,7 @@
 	$pass=$queries[1];
 	
 	$query="insert into users_easy_register (username, password) values (".'"'.$username.'"'.", ".'"'.$pass.'")';
-			mysqli_query($connection, $query);
+	mysqli_query($connection, $query);
 	$loginquery = "select password from users_easy_register where username = ".'"'.$username.'"';
 	$realpass= mysqli_fetch_row(mysqli_query($connection, $loginquery));
 	if($pass==$realpass[0]){
@@ -37,7 +37,6 @@
 	else{
 		$res = "ERROR";
 	}
-
-echo($res);
+	echo(json_encode(array($res)));
 
 ?>
