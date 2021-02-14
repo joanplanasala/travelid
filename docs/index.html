@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+<!--<!DOCTYPE html>
 <head>
   <link rel="stylesheet" href="index.css">
 </head>
@@ -7,17 +6,15 @@
 <body>
   <div class = "header"><h2 id = "webtitle">Travelid</h2>
 
-  <!-- **** PRIMERA PAGINA **** -->
+  <-- **** PRIMERA PAGINA **** 
   <div class = "form" id = "countryform">
-    <form onsubmit="countrysearched(this)">
-      <label>Country:</label><br>
-      <input type="text" id="country" name="country" value=""><br>
-      <input type="submit" value="Submit">
+    <form>
+      <label>Country:</label>
+      <input type="text" id="country" name="country">
+      <button class="search" id="button_search">SEARCH</button>
     </form> 
   </div>
-  <!-- ************************* -->
-
-  <!-- **** SEGONA PAGINA **** -->
+**** SEGONA PAGINA **** 
   <div class="row">
     <div class="column left" style="background-color:#aaa;">
       <h2>Forum</h2>
@@ -25,18 +22,81 @@
     </div>
 
     <div class="column right datacol" style="background-color:#bbb;">
-      <h1 id = "name">Country Name</h2>
-      <h2 id = "continent">Continent</h2>
-      <p>Population density: </p><p id = "pop_density">pop_density</p><br>
-      <p>Positive Rate: </p><p id = "pos_rate">pos_rate</p><meter id="pos_rate_meter" value="21" min="0" max="100"></meter><br>
-      <p>New Cases Per Million: </p><p id = "n_cases_pm">n_cases_pm</p><meter id="n_cases_pm_meter" value="0" min="0" max="1000000"></meter><br>
-      <p>New Deaths Per Million: </p><p id = "n_deaths_pm">n_deaths_pm</p><meter id="n_deaths_pm_meter" value="0" min="0" max="1000000"></meter><br>
-      <p>% People Vaccinated: </p><p id = "percent_vaccin">percent_vaccin</p><meter id="percent_vaccin_meter" value="13" min="0" max="100"></meter><br>
-      <p>Stringency Index</p><p id = "stringency">stringency</p><meter id="stringency_meter" value="13" min="0" max="100"></meter><br>
+      <h1 id = "name"></h2>
+      <h2 id = "continent"></h2>
+      <p>Population density: </p><p id = "pop_density"></p><p> people per &#13218;</p><br>
+      <p>% Positive Rate: </p><p id = "pos_rate"></p><meter id="pos_rate_meter" value="0" min="0" max="100"></meter><br>
+      <p>New Cases Per Million: </p><p id = "n_cases_pm"></p><meter id="n_cases_pm_meter" value="0" min="0" max="1000000"></meter><br>
+      <p>New Deaths Per Million: </p><p id = "n_deaths_pm"></p><meter id="n_deaths_pm_meter" value="0" min="0" max="1000000"></meter><br>
+      <p>% People Vaccinated: </p><p id = "percent_vaccin"></p><meter id="percent_vaccin_meter" value="0" min="0" max="100"></meter><br>
+      <p>Stringency Index</p><p id = "stringency"></p><meter id="stringency_meter" value="0" min="0" max="100"></meter><br>
     </div>
   </div>
-  <!-- ************************* -->
+************************* 
 
   <script src="index.js"></script>
 </body>
-</html>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="" />  <!-- Completaaaar! -->
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="Travelid"
+      content="The best way of enjoying a safety travel"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <title>Travelid</title>
+  </head>
+  <body>
+
+    <div class="container">
+    <header>
+      <h2><a href="#"><i class="fas fa-globe-europe"></i> Travelid</a></h2>
+      <nav>
+        <a class="btn" href="#" title="Register / Log In">Register/Log In</a>
+      </nav>
+    </header>
+
+    <div class="cover" id="ini_screen">
+      <h1>The best way of enjoying a safety travel</h1>
+      <form  class="flex-form">
+        <label for="from">
+          <i class="fas fa-map-marker-alt"></i>
+        </label>
+        <input type="text" placeholder="Where do you want to go?" id="country" name="country">
+        <button class="search" value="Search" id="button_search">Search</button>
+      </form>
+    </div>
+
+    </div>
+
+  <div class="row" id="data">
+    <div class="column left" style="background-color:#aaa;">
+      <h2>Forum</h2>
+      <p>Some text..</p>
+    </div>
+    <div class="column right datacol" style="background-color:#bbb;">
+      <h1 id = "name"></h2>
+      <h2 id = "continent"></h2>
+      <p>Population density: </p><p id = "pop_density"></p><p> people per &#13218;</p><br>
+      <p>% Positive Rate: </p><p id = "pos_rate"></p><meter id="pos_rate_meter" value="0" min="0" max="100"></meter><br>
+      <p>New Cases Per Million: </p><p id = "n_cases_pm"></p><meter id="n_cases_pm_meter" value="0" min="0" max="1000000"></meter><br>
+      <p>New Deaths Per Million: </p><p id = "n_deaths_pm"></p><meter id="n_deaths_pm_meter" value="0" min="0" max="1000000"></meter><br>
+      <p>% People Vaccinated: </p><p id = "percent_vaccin"></p><meter id="percent_vaccin_meter" value="0" min="0" max="100"></meter><br>
+      <p>Stringency Index</p><p id = "stringency"></p><meter id="stringency_meter" value="0" min="0" max="100"></meter><br>
+    </div>
+  </div>
+   
+
+<script src="./index.js"></script>
+      </body>
+    </html>
