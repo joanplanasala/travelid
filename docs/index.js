@@ -30,8 +30,12 @@ var data_div = document.getElementById("data");
 var forum = document.getElementById("forum");
 var comment_textbox = document.getElementById("comment_textbox");
 var title_link = document.getElementById("title_link");
+var reg_log_button = document.getElementById("reg_log_button");
 var config_display = ini_screen.style.display;
 
+reg_log_button.onclick = function(){
+	location.replace("../travelid/public/login.html");
+}
 title_link.onclick = function(){
 	ini_screen.style.display = config_display;
 }
@@ -73,7 +77,7 @@ button_search.onclick = function(){
 				document.getElementById("stringency_meter").value = parseInt(country.stringency);
 
 			}
-
+			forum.innerHTML = "";
 			if(comments.length != 0){
 				for (var i = 0; i <= comments.length-1; i++) {
 					let comment = new Comments(comments[i].id, comments[i].username, comments[i].comment, comments[i].date, comments[i].likes);

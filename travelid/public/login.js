@@ -1,6 +1,11 @@
 
 var button_login = document.getElementById("button_login");
 var user_loged = "";
+var title_link = document.getElementById("title_link");
+
+title_link.onclick = function(){
+	location.replace("../docs/index.html");
+}
 
 button_login.onclick = function(){
 	const xhttp = new XMLHttpRequest();
