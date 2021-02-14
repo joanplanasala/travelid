@@ -7,7 +7,7 @@ button_login.onclick = function(){
 	let username = document.getElementById("username").value;
 	let password = document.getElementById("password").value
 	if(username != "" && password != ""){  
-		let url = "http://localhost/travelid/travelid/login.php/"+username+"?"+password;
+		let url = "http://localhost/travelid/travelid/server/login_easy.php/"+username+"?"+password;
 		console.log(url);
 		xhttp.open('GET', url, true);
 		xhttp.send();
