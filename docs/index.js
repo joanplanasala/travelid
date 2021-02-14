@@ -41,12 +41,16 @@ title_link.onclick = function(){
 }
 
 
-button_search.onclick = function(){
+button_search.onclick = function() {
+	displayall();
+}
+
+function displayall(){
 	ini_screen.style.display = "none";
 	const xhttp = new XMLHttpRequest();
 	let selection = document.getElementById("country").value;
 	console.log(selection);
-	let url = "http://localhost/travelid/travelid/server/index.php/".concat(selection);
+	let url = "http://localhost/travelid/server/index.php/".concat(selection);
 	console.log(url);
 	xhttp.open('GET', url, true);
 	xhttp.send();
@@ -103,12 +107,14 @@ button_comment.onclick = function(){
 	let comment_text = comment_textbox.value;
 	const xhttp = new XMLHttpRequest();
 	if(country != null){
-		let url = "http://localhost/travelid/travelid/server/index.php/"+country.name+'?'+comment_id+'?'+user_logged+"?C?"+comment_text;
+		let url = "http://localhost/travelid/server/index.php/"+country.name+'?'+comment_id+'?'+user_logged+"?C?"+comment_text;
 		console.log(url);
 		xhttp.open('GET', url, true);
 		xhttp.send();
 		comment_id ++;
 	}
-	return false;
 
+	displayall();
+
+	return false;
 }
