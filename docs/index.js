@@ -21,10 +21,10 @@ class Comments {
 }
 
 //buttons:
-var button_search = document.getElementById("button_search"); 
+var button_search = document.getElementById("button_search");
 var button_register = document.getElementById("button_register");
 var button_login = document.getElementById("button_login");
-var button_comment = document.getElementById("button_comment"); 
+var button_comment = document.getElementById("button_comment");
 var title_link = document.getElementById("title_link");
 
 //textboxes:
@@ -64,7 +64,7 @@ button_login.onclick = function(){
 	const xhttp = new XMLHttpRequest();
 	let username = document.getElementById("username").value;
 	let password = document.getElementById("password").value;
-	if(username != "" && password != ""){  
+	if(username != "" && password != ""){
 		let url = "http://localhost/travelid/travelid/server/login_easy.php/"+username+"?"+password;
 		console.log(url);
 		xhttp.open('GET', url, true);
@@ -83,7 +83,7 @@ button_login.onclick = function(){
 						login_div.style.display = "none";
 						data_div.style.display = config_display_data;
 					}
-				}  
+				}
 			}
 		}
 	}
@@ -93,6 +93,7 @@ button_login.onclick = function(){
 title_link.onclick = function(){
 	ini_screen.style.display = config_display_ini;
 	data_div.style.display = "none";
+	login_div.style.display = "none";
 	password_textbox.value = null;
 	username_textbox.value = null;
 
@@ -121,8 +122,8 @@ function displayall(selection){
 			covid_data = data[0].covid_data;
 			comments = data[1].comments;
 			if(covid_data.length != 0){
-				country = new Country(selection, covid_data[0].continent, covid_data[0].population_density, 
-					covid_data[0].positive_rate, covid_data[0].main_cases_smoothed_per_million, covid_data[0].new_deaths_smoothed_per_million, 
+				country = new Country(selection, covid_data[0].continent, covid_data[0].population_density,
+					covid_data[0].positive_rate, covid_data[0].main_cases_smoothed_per_million, covid_data[0].new_deaths_smoothed_per_million,
 					covid_data[0].people_vaccinated_per_hundred, covid_data[0].stringencyindex);
 
 				document.getElementById("name").innerHTML = country.name;
@@ -154,7 +155,7 @@ function displayall(selection){
 					                        	<p>${comment.text}</p>
 					                        </div>
 					                        <p>Posted by ${comment.username} on ${comment.date}</p>
-					                        <p>Likes (${comment.likes})</p> 
+					                        <p>Likes (${comment.likes})</p>
 					                    </div>
 									`;
 				}

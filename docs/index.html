@@ -23,7 +23,8 @@
   </head>
   <body>
 
-    <div class="container">
+
+  <div class="container">
     <header>
       <h2><a href="#" id="title_link"><i class="fas fa-globe-europe"></i> Travelid</a></h2>
       <nav id="reg_log_button">
@@ -38,11 +39,14 @@
           <i class="fas fa-map-marker-alt"></i>
         </label>
         <input type="text" placeholder="Where do you want to go?" id="country" name="country">
-        <button class="search" value="Search" id="button_search">Search</button>
+        <input type="submit" value="Search" id="button_search">Search</input>
       </form>
     </div>
 
-    </div>
+  </div>
+
+
+
 
   <div class="row" id="data">
     <div class="column left">
@@ -53,13 +57,13 @@
           <textarea name="comment_box" id="comment_textbox" rows="4" cols="50"></textarea><br>
           <button id="button_comment">Publish</button>
         </form>
-        
-      </div>
-      <div id="forum">
+
+        </div>
+        <div id="forum">
         <!-- aqui van els comentaris -->
 
+        </div>
       </div>
-    </div>
     <div class="column right datacol">
       <h1 id = "name">Country</h2>
       <h2 id = "continent">Continent</h2>
@@ -70,6 +74,9 @@
       <p>% People Vaccinated: </p><p id = "percent_vaccin"></p><meter id="percent_vaccin_meter" value="0" min="0" max="100"></meter><br>
       <p>Stringency Index</p><p id = "stringency"></p><meter id="stringency_meter" value="0" min="0" max="100"></meter><br>
     </div>
+
+
+
   </div>
 
   <div id="register_login_screen">
@@ -91,11 +98,11 @@
           <span class="required">Password</span>
         </label>
       </div>
-      <button type="submit" id="button_login">Log in / Register</button> 
+      <button type="submit" id="button_login">Log in / Register</button>
     </form>
 
   </div>
-   
+
 
 <script src="./index.js"></script>
       </body>

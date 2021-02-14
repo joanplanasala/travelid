@@ -124,7 +124,7 @@ a.btn:hover {
   align-items: center;
 }
 
-.flex-form .search {
+.flex-form input[type="submit"] {
   background: #ef3f5a;
   border: 1px solid #ef3f5a;
   color: #fff;
@@ -135,7 +135,7 @@ a.btn:hover {
   transition: all 0.2s;
 }
 
-.flex-form .sea:hover {
+.flex-form input[type="submit"]:hover {
   background: #d73851;
   border: 1px solid #d73851;
 }
