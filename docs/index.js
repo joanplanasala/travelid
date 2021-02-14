@@ -1,3 +1,5 @@
+
+//OBJECT CLASSES DECLARATION
 class Country {
 	constructor(name, continent, pop_density, pos_rate, n_cases_pm, n_deaths_pm, percent_vaccin, stringency) {
 		this.name = name;
@@ -22,8 +24,9 @@ class Comments {
 
 //buttons:
 var button_search = document.getElementById("button_search");
-var button_register = document.getElementById("button_register");
+var button_login_register_screen = document.getElementById("button_login_register_screen");
 var button_login = document.getElementById("button_login");
+var button_register = document.getElementById("button_register");
 var button_comment = document.getElementById("button_comment");
 var title_link = document.getElementById("title_link");
 
@@ -52,9 +55,8 @@ login_div.style.display = "none";
 
 
 
-// FUNCTIONS:
-
-button_register.onclick = function(){
+// BUTTON EVENTS:
+button_login_register_screen.onclick = function(){
 	data_div.style.display = "none";
 	ini_screen.style.display = "none";
 	login_div.style.display = config_display_login;
@@ -65,7 +67,7 @@ button_login.onclick = function(){
 	let username = document.getElementById("username").value;
 	let password = document.getElementById("password").value;
 	if(username != "" && password != ""){
-		let url = "http://localhost/travelid/travelid/server/login_easy.php/"+username+"?"+password;
+		let url = "http://localhost/travelid/travelid/server/login_easy.php/"+username+"?"+password+"?LOG";
 		console.log(url);
 		xhttp.open('GET', url, true);
 		xhttp.send();
@@ -84,11 +86,48 @@ button_login.onclick = function(){
 						data_div.style.display = config_display_data;
 					}
 				}
+				else{
+					alert("Error while logging in! revise your inputs.");
+				}
 			}
 		}
 	}
 	return false;
 }
+
+button_register.onclick = function(){
+	const xhttp = new XMLHttpRequest();
+	let username = document.getElementById("username").value;
+	let password = document.getElementById("password").value;
+	if(username != "" && password != ""){
+		let url = "http://localhost/travelid/travelid/server/login_easy.php/"+username+"?"+password+"?REG";
+		console.log(url);
+		xhttp.open('GET', url, true);
+		xhttp.send();
+		xhttp.onreadystatechange = function(){
+			if(this.readyState ==4 && this.status == 200){
+				let user_registered = JSON.parse(this.responseText);
+				if(user_registered[0] != "ERROR"){
+					if(selection == null){
+						ini_screen.style.display = config_display_ini;
+						login_div.style.display = "none";
+						data_div.style.display = "none";
+					}
+					else{
+						ini_screen.style.display = "none";
+						login_div.style.display = "none";
+						data_div.style.display = config_display_data;
+					}
+				}
+				else{
+					alert("User alredy registered! Try to LOG IN.");
+				}
+			}
+		}
+	}
+	return false;
+}
+
 
 title_link.onclick = function(){
 	ini_screen.style.display = config_display_ini;
@@ -107,6 +146,23 @@ button_search.onclick = function() {
 	return false;
 }
 
+
+button_comment.onclick = function(){
+	let comment_text = comment_textbox.value;
+	const xhttp = new XMLHttpRequest();
+	if(country != null && user_logged != null){
+		let url = "http://localhost/travelid/travelid/server/index.php/"+country.name+'?'+comment_id+'?'+user_logged+"?C?"+comment_text;
+		console.log(url);
+		xhttp.open('GET', url, true);
+		xhttp.send();
+		comment_id ++;
+	}
+	displayall(selection);
+	return false;
+}
+
+
+// FUNCTION FOR DISPLAYING DATA:
 function displayall(selection){
 	ini_screen.style.display = "none";
 	data_div.style.display = config_display_data;
@@ -163,22 +219,6 @@ function displayall(selection){
 			}
 		}
 	}
-
-	return false;
-}
-
-button_comment.onclick = function(){
-	let comment_text = comment_textbox.value;
-	const xhttp = new XMLHttpRequest();
-	if(country != null && user_logged != null){
-		let url = "http://localhost/travelid/travelid/server/index.php/"+country.name+'?'+comment_id+'?'+user_logged+"?C?"+comment_text;
-		console.log(url);
-		xhttp.open('GET', url, true);
-		xhttp.send();
-		comment_id ++;
-	}
-
-	displayall(selection);
 
 	return false;
 }
