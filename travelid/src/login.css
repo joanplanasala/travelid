@@ -4,12 +4,40 @@ html, body {
   align-items: center;
   border: 0;
   display: flex;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family:  Helvetica, Arial, sans-serif;
   font-size: 16px;
   height: 100%;
   justify-content: center;
   margin: 0;
   padding: 0;
+}
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  margin-top: 10px;
+
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.9;
+  margin-left: 100px;
+}
+
+a:hover {
+  opacity: 1;
+}
+i {
+  font-size: 1.3rem;
 }
 
 form {
