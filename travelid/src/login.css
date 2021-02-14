@@ -169,7 +169,7 @@ input {
   transition: all 0.25s;
 }
 
-input[type="submit"] {
+button[type="submit"] {
   color: hsl(var(--bgColorH), var(--bgColorS), var(--bgColorL));
   background: hsl(var(--fgColorH), var(--fgColorS), var(--fgColorL));
   font-size: 0.75rem;
@@ -183,20 +183,20 @@ input[type="submit"] {
 }
 
 input[type="checkbox"]:focus + label span::before,
-input[type="submit"]:focus {
+button[type="submit"]:focus {
   outline: 1px dashed hsl(var(--fgColorH), calc(var(--fgColorS) * 2), calc(var(--fgColorL) * 1.15));
   outline-offset: 2px;
 }
 
-input[type="submit"]:focus {
+button[type="submit"]:focus {
   background: hsl(var(--fgColorH), var(--fgColorS), calc(var(--fgColorL) * 0.85));
 }
 
-input[type="submit"]:hover {
+button[type="submit"]:hover {
   background: hsl(var(--fgColorH), var(--fgColorS), calc(var(--fgColorL) * 0.85));
 }
 
-input[type="submit"]:active {
+button[type="submit"]:active {
   background: hsl(var(--fgColorH), calc(var(--fgColorS) * 2), calc(var(--fgColorL) * 1.15));
   transition: all 0.125s;
 }
