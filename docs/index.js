@@ -14,8 +14,11 @@ class Country {
 }
 
 var button_search = document.getElementById("button_search"); 
+var ini_screen = document.getElementById("ini_screen");
+var data_div = document.getElementById("data");
 
 button_search.onclick = function(){
+	ini_screen.style.display = "none";
 	const xhttp = new XMLHttpRequest();
 	let selection = document.getElementById("country").value;
 	console.log(selection);
