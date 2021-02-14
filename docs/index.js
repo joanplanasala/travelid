@@ -31,27 +31,34 @@ var forum = document.getElementById("forum");
 var comment_textbox = document.getElementById("comment_textbox");
 var title_link = document.getElementById("title_link");
 var reg_log_button = document.getElementById("reg_log_button");
-var config_display = ini_screen.style.display;
+var config_display_ini = ini_screen.style.display;
+var config_display_data = data_div.style.display;
+data_div.style.display = "none";
 var selection;
 
 reg_log_button.onclick = function(){
 	location.replace("../travelid/public/login.html");
 }
+
 title_link.onclick = function(){
-	ini_screen.style.display = config_display;
+	ini_screen.style.display = config_display_ini;
+	data_div.style.display = "none";
+	return false;
 }
 
 
 button_search.onclick = function() {
 	selection = document.getElementById("country").value;
 	displayall(selection);
+	return false;
 }
 
 function displayall(selection){
 	ini_screen.style.display = "none";
+	data_div.style.display = config_display_data;
 	const xhttp = new XMLHttpRequest();
 	console.log(selection);
-	let url = "http://localhost/travelid/server/index.php/".concat(selection);
+	let url = "http://localhost/travelid/travelid/server/index.php/".concat(selection);
 	console.log(url);
 	xhttp.open('GET', url, true);
 	xhttp.send();
@@ -108,7 +115,7 @@ button_comment.onclick = function(){
 	let comment_text = comment_textbox.value;
 	const xhttp = new XMLHttpRequest();
 	if(country != null){
-		let url = "http://localhost/travelid/server/index.php/"+country.name+'?'+comment_id+'?'+user_logged+"?C?"+comment_text;
+		let url = "http://localhost/travelid/travelid/server/index.php/"+country.name+'?'+comment_id+'?'+user_logged+"?C?"+comment_text;
 		console.log(url);
 		xhttp.open('GET', url, true);
 		xhttp.send();
