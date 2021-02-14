@@ -20,10 +20,15 @@ class Comments {
     }
 }
 
+var user_logged = "EXAMPLE";
+var country;
+var comment_id = 0;
 var button_search = document.getElementById("button_search"); 
+var button_comment = document.getElementById("button_comment"); 
 var ini_screen = document.getElementById("ini_screen");
 var data_div = document.getElementById("data");
 var forum = document.getElementById("forum");
+var comment_textbox = document.getElementById("comment_textbox");
 
 button_search.onclick = function(){
 	ini_screen.style.display = "none";
@@ -35,15 +40,14 @@ button_search.onclick = function(){
 	xhttp.open('GET', url, true);
 	xhttp.send();
 
-	xhttp.onreadystatechange = function(){
+	xhttp.onreadystatechange = function display_data(){
 		if(this.readyState ==4 && this.status == 200){
 			let data = JSON.parse(this.responseText);
 			console.log(data);
 			covid_data = data[0].covid_data;
 			comments = data[1].comments;
-			console.log(covid_data[0]);
 			if(covid_data.length != 0){
-				let country = new Country(selection, covid_data[0].continent, covid_data[0].population_density, 
+				country = new Country(selection, covid_data[0].continent, covid_data[0].population_density, 
 					covid_data[0].positive_rate, covid_data[0].main_cases_smoothed_per_million, covid_data[0].new_deaths_smoothed_per_million, 
 					covid_data[0].people_vaccinated_per_hundred, covid_data[0].stringencyindex);
 
@@ -62,7 +66,7 @@ button_search.onclick = function(){
 				document.getElementById("stringency_meter").value = parseInt(country.stringency);
 
 			}
-			
+
 			if(comments.length != 0){
 				for (var i = 0; i <= comments.length-1; i++) {
 					let comment = new Comments(comments[i].id, comments[i].username, comments[i].comment, comments[i].date, comments[i].likes);
@@ -82,4 +86,18 @@ button_search.onclick = function(){
 	}
 
 	return false;
+}
+
+button_comment.onclick = function(){
+	let comment_text = comment_textbox.value;
+	const xhttp = new XMLHttpRequest();
+	if(country != null){
+		let url = "http://localhost/travelid/travelid/server/index.php/"+country.name+'?'+comment_id+'?'+user_logged+"?C?"+comment_text;
+		console.log(url);
+		xhttp.open('GET', url, true);
+		xhttp.send();
+		comment_id ++;
+	}
+	return false;
+
 }
