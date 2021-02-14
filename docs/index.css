@@ -32,7 +32,9 @@ body {
   background-size: cover;
   color: #0a0a0b;
   overflow: auto;
-  padding-bottom: 5%;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 ul, nav{
@@ -62,7 +64,7 @@ i {
   font-size: 1.3rem;
 }
 
-header {
+.home{
   position: absolute;
   top: 0;
   left: 0;
@@ -75,19 +77,19 @@ header {
   padding: 10px 100px 0;
 }
 
-header nav ul {
+.home nav ul {
   display: flex;
 }
 
-header nav li{
+.home nav li{
   margin: 0 15px;
 }
 
-header nav li:first-child{
+.home nav li:first-child{
   margin-left: 0;
 }
 
-header nav li:last-child{
+.home nav li:last-child{
   margin-right: 0;
 }
 
@@ -164,13 +166,7 @@ input[type="text"] {
   flex-basis: 500px;
 }
 
-#madeby {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 25px 100px;
-  color: #fff;
-}
+
 
 /*comment styles*/
 
@@ -252,6 +248,8 @@ i {
   text-align: center;
   font-family: 'Raleway', sans-serif;
   opacity: 0.95;
+  height: 100%;
+
 }
 
 .left {
@@ -277,25 +275,40 @@ i {
 
 
 
-@media all and (max-width:360px) {
-  header nav li{
-    margin: 0 10px;
-  }
+.login{
+  padding:7%
+}
+.login-form{
+  background: white;
+  border-radius: 2rem;
+  display: block;
+  flex-direction: column;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  width: 240px;
+  height: 364px;
+  margin-left: 450px;
+  color: black;
+}
+.a11y-hidden{
+  color: black;
+  font-size: 2rem;
+}
+.text{
+  margin-bottom: 20px;
+}
+.log{
+  width:80%;
+  display: flex;
+  text-align: center;
+  position: absolute;
+}
+.login-button{
+  margin: 10px;
+}
 
-  .flex-form {
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-  }
 
-  input[type="text"] {
-    flex-basis: 0;
-  }
 
-  label {
-    display: none;
-  }
 
 }
