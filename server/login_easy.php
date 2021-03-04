@@ -29,6 +29,7 @@
 	$pass=$queries[1];
 	$state = $queries[2];
 	
+	$res = null;
 	$usernames = [];
 	if($state == "REG"){
 		$result = mysqli_query($connection,"select username from users_easy_register");
@@ -46,6 +47,7 @@
 		else{
 			$query="insert into users_easy_register (username, password) values (".'"'.$username.'"'.", ".'"'.$pass.'")';
 		mysqli_query($connection, $query);
+		$res = $username;
 		}
 	}
 	elseif ($state == "LOG") {

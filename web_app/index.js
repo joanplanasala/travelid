@@ -118,6 +118,7 @@ button_register.onclick = function(){
 						login_div.style.display = "none";
 						data_div.style.display = config_display_data;
 					}
+					user_logged = user_registered;
 				}
 				else{
 					alert("User alredy registered! Try to LOG IN.");
@@ -150,7 +151,8 @@ button_search.onclick = function() {
 button_comment.onclick = function(){
 	let comment_text = comment_textbox.value;
 	const xhttp = new XMLHttpRequest();
-	if(country != null && user_logged != null){
+	console.log(selection, user_logged);
+	if(selection != null && user_logged != null){
 		let url = "http://localhost/travelid/travelid/server/index.php/"+country.name+'?'+comment_id+'?'+user_logged+"?C?"+comment_text;
 		console.log(url);
 		xhttp.open('GET', url, true);
@@ -198,21 +200,15 @@ function displayall(selection){
 
 			}
 			forum.innerHTML = "";
+			console.log(comments)
 			if(comments.length != 0){
-				for (var i = 0; i <= comments.length-1; i++) {
+				for (let i = 0; i <= comments.length-1; i++) {
 					let comment = new Comments(comments[i].id, comments[i].username, comments[i].comment, comments[i].date, comments[i].likes);
 					forum.innerHTML +=`
-										<div class="post" style="margin-left: 40px;
-																    width: 600px;
-																    position: absolute;
-																    color: black;
-																    background-color: white;">
-					                        <div class="entry" style="margin: 30px;">
-					                        	<p>${comment.text}</p>
-					                        </div>
-					                        <p>Posted by ${comment.username} on ${comment.date}</p>
-					                        <p>Likes (${comment.likes})</p>
-					                    </div>
+										<div class="post" style="margin:30px">
+					                        	<p>${comment.text} Posted by ${comment.username} on ${comment.date} Likes (${comment.likes})</p>
+					                     </div>
+
 									`;
 				}
 

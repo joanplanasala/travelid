@@ -260,6 +260,7 @@ i {
 .right {
   background-color:#bbb;
   width: 20%;
+  height: 70%;
 }
 
 /* Clear floats after the columns */
@@ -288,7 +289,7 @@ i {
   overflow: hidden;
   width: 240px;
   height: 364px;
-  margin-left: 450px;
+  margin-left: 35%;
   color: black;
 }
 .a11y-hidden{
@@ -308,6 +309,10 @@ i {
   margin: 10px;
 }
 
+.forum{
+  height: 300px;
+  display: block;
+}
 
 
 
